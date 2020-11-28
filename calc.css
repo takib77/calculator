@@ -7,7 +7,7 @@ body {
 
 .container {
     background-color: rgb(245, 245, 245);
-    border: 3px solid rgb(245, 222, 179);
+    border: 3px solid rgb(245, 222, 180);
     border-radius: 15px;
     display: flex;
     flex-direction: row;
@@ -18,10 +18,10 @@ body {
 }
 
 .output {
-    background-color: rgb(150, 150, 150);
-    border: 3px solid rgb(245, 222, 179);
+    background-color: rgb(180, 180, 180);
+    border: 3px solid rgb(245, 222, 180);
     box-sizing: border-box;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 10px;
     padding: 5px;
     text-align: right;
@@ -29,7 +29,7 @@ body {
 }
 
 .buttons {
-    background-color: rgb(217, 209, 248);
+    background-color: rgb(228, 223, 250);
     border: 2px solid rgb(245, 222, 179);
     border-radius: 15px;
     box-sizing: border-box;
@@ -74,6 +74,10 @@ body {
     box-sizing: border-box;
     color: rgb(245, 245, 245);
     width: 25%;
+}
+
+.cancel {
+    background-color: rgb(243, 203, 184);
 }
 
 .buttons:hover {
