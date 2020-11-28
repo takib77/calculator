@@ -1,11 +1,14 @@
 body {
+    background-color: rgb(70, 130, 180);
     margin: auto;
     max-width: 1150px;
     padding: 100px 0;
 }
 
 .container {
+    background-color: rgb(245, 245, 245);
     border: 3px solid rgb(245, 222, 179);
+    border-radius: 15px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -15,7 +18,7 @@ body {
 }
 
 .output {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(150, 150, 150);
     border: 3px solid rgb(245, 222, 179);
     box-sizing: border-box;
     font-size: 24px;
@@ -26,10 +29,12 @@ body {
 }
 
 .buttons {
-    background-color: rgb(249, 249, 249);
+    background-color: rgb(217, 209, 248);
     border: 2px solid rgb(245, 222, 179);
+    border-radius: 15px;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
     font-weight: 600;
     margin-bottom: 10px;
     padding: 10px 20px;
@@ -68,7 +73,10 @@ body {
     border: 2px solid rgb(245, 222, 179);
     box-sizing: border-box;
     color: rgb(245, 245, 245);
-    padding-top: 28%;
     width: 25%;
 }
 
+.buttons:hover {
+    border: 2px solid rgb(87, 79, 64);
+    opacity: 75%;
+}
