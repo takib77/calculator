@@ -10,28 +10,28 @@
 
 <body>
     <div class="container">
-        <input class="output" data-field="output" type="text" name="input" id="input" maxlength="22" placeholder="0">
+        <input class="output" data-field="output" type="text" name="input" id="input" placeholder="0" disabled>
         <div class="operators__box">
-            <button class="buttons operators sum" data-btn="sum">+</button>
-            <button class="buttons operators sub" data-btn="sub">-</button>
-            <button class="buttons operators multi" data-btn="multi">×</button>
-            <button class="buttons operators divis" data-btn="divis">÷</button>
+            <button id="calc" class="buttons operators sum" data-btn="+">+</button>
+            <button id="calc" class="buttons operators sub" data-btn="-">-</button>
+            <button id="calc" class="buttons operators multi" data-btn="×">×</button>
+            <button id="calc" class="buttons operators divis" data-btn="÷">÷</button>
         </div>
         <div class="numbers__box">
-            <button class="buttons numbers seven" data-btn="seven">7</button>
-            <button class="buttons numbers eight" data-btn="eight">8</button>
-            <button class="buttons numbers nine" data-btn="nine">9</button>
-            <button class="buttons numbers four" data-btn="four">4</button>
-            <button class="buttons numbers five" data-btn="five">5</button>
-            <button class="buttons numbers six" data-btn="six">6</button>
-            <button class="buttons numbers one" data-btn="one">1</button>
-            <button class="buttons numbers two" data-btn="two">2</button>
-            <button class="buttons numbers three" data-btn="three">3</button>
-            <button class="buttons numbers zero" data-btn="zero">0</button>
-            <button class="buttons numbers point" data-btn="point">.</button>
-            <button class="buttons numbers cancel" data-del="cancel">C</button>
+            <button id="calc" class="buttons numbers seven" data-btn="7">7</button>
+            <button id="calc" class="buttons numbers eight" data-btn="8">8</button>
+            <button id="calc" class="buttons numbers nine" data-btn="9">9</button>
+            <button id="calc" class="buttons numbers four" data-btn="4">4</button>
+            <button id="calc" class="buttons numbers five" data-btn="5">5</button>
+            <button id="calc" class="buttons numbers six" data-btn="6">6</button>
+            <button id="calc" class="buttons numbers one" data-btn="1">1</button>
+            <button id="calc" class="buttons numbers two" data-btn="2">2</button>
+            <button id="calc" class="buttons numbers three" data-btn="3">3</button>
+            <button id="calc" class="buttons numbers zero" data-btn="0">0</button>
+            <button id="calc" class="buttons numbers point" data-btn=".">.</button>
+            <button class="buttons numbers cancel">C</button>
         </div>
-        <button class="buttons equal" data-btn="equal">=</button>
+        <button class="buttons equal" data-equal="=">=</button>
     </div>
 
     <script src="./calc.js"></script>
