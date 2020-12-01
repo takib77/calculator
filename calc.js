@@ -26,8 +26,9 @@ const cancelClick = () => {
     const delOutput = document.querySelector('.cancel');
     delOutput.addEventListener('click', (event) => {
         document.querySelector('#input').value = '';
-        calc = [];
     })
+    calc = [];
+    result = 0;
 };
 
 
@@ -36,10 +37,17 @@ const cancelClick = () => {
 const equalClick = () => {
     const getResultInOutput = document.querySelector('.equal');
     getResultInOutput.addEventListener('click', (event) => {
-        //        document.querySelector('#input').value = '';
+        document.querySelector('#input').value = '';
         writeOutput(event.target.dataset.equal);
         writeOutput(result);
     })
+};
+
+
+// Eseménye eltávolító
+
+const removeListenerCancel = () => {
+    delOutput.removeEventListener('click', cancelClick)
 };
 
 
@@ -56,6 +64,7 @@ const signes = ['+', '-', '×', '÷'];
 
 const numbers = [];
 const operators = [];
+const calcform = [];
 const numsAndOperatorsSeparator = () => {
     const outputString = document.querySelector('#input').value;
     let num = '';
@@ -64,14 +73,17 @@ const numsAndOperatorsSeparator = () => {
             num += outputString[i];
         } else {
             numbers.push(parseFloat(num));
+            calcform.push(parseFloat(num));
             num = '';
-            operators.push(outputString[i])
+            operators.push(outputString[i]);
+            calcform.push(outputString[i]);
         }
     }
     numbers.push(parseFloat(num));
-    //    if (numbers.includes(NaN)) {
-    //        document.querySelector('#input').value = 'ERROR!';
-    //    }
+    calcform.push(parseFloat(num));
+    if (numbers.includes(NaN)) {
+        document.querySelector('#input').value = 'ERROR!';
+    }
     console.log('Számok:', numbers, 'Jelek:', operators);
 }
 
@@ -80,37 +92,30 @@ const numsAndOperatorsSeparator = () => {
 
 let calc = [];
 let result = 0;
-const calculator = () => {
-    calc.push(numbers[0]);
-    for (let i = 0; i < numbers.length - 1; i += 1) {
-        for (let j = 0; j < operators.length; j += 1) {
-            calc.push(operators[j], numbers[i+1]);
-            console.log(calc);
-            if (operators[j] === '+') {
-                result = sum(calc[0], calc[2]);
-            } else if (operators[j] === '-') {
-                result = sub(calc[0], calc[2]);
-            } else if (operators[j] === '×') {
-                result = mul(calc[0], calc[2]);
-            } else if (operators[j] === '÷') {
-                result = div(calc[0], calc[2]);
-            }
-            calc = [result];
-            console.log(result);
+const calculator = (arr) => {
+    calc.push(calcform[0])
+    for (let i = 0; i < arr.length; i += 1) {
+        calc.push(arr[i + 1], arr[i + 2]);
+        console.log('PUSH', calc);
+        if (arr[i + 1] === '+') {
+            result = sum(calc[0], calc[2]);
+        } else if (arr[i + 1] === '-') {
+            result = sub(calc[0], calc[2]);
+        } else if (arr[i + 1] === '×') {
+            result = mul(calc[0], calc[2]);
+        } else if (arr[i + 1] === '÷') {
+            result = div(calc[0], calc[2]);
         }
+        calc = [result];
+        console.log(result);
+        calcform.splice(0, 2, [result]);
     }
-}
-
-
-
-
-
-
+};
 
 
 
 handleCalcClick();
-cancelClick();
-equalClick();
 numsAndOperatorsSeparator();
-calculator();
+calculator(calcform);
+//cancelClick();
+equalClick();
