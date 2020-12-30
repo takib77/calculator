@@ -89,37 +89,31 @@ const numsAndOperatorsSeparator = () => {
     numbers.push(parseFloat(num));
     calcform.push(parseFloat(num));
     num = '';
-    console.log('Számok:', numbers, 'Jelek:', operators);
+//    console.log('Számok:', numbers, 'Jelek:', operators);
 };
 
 
 // Műveletek végrehajtása
 
 const calculator = (arr) => {
-    if (calcform.length === 0) {
-        calc.push(0);
-    } else {
-        calc.push(calcform[0]);
-    }
-    for (let i = 0; i < arr.length; i += 1) {
-        calc.push(arr[i + 1], arr[i + 2]);
-        console.log('PUSH', calc);
+    for (let i = 0; i < operators.length; i += 1) {
+//        console.log('CALCFORM', calcform);
         if (arr[i + 1] === '+') {
-            return result = sum(calc[0], calc[2]);
+            result = sum(calcform[i], calcform[i + 2]);
         } else if (arr[i + 1] === '-') {
-            return result = sub(calc[0], calc[2]);
+            result = sub(calcform[i], calcform[i + 2]);
         } else if (arr[i + 1] === '×') {
-            return result = mul(calc[0], calc[2]);
+            result = mul(calcform[i], calcform[i + 2]);
         } else if (arr[i + 1] === '÷') {
-            return result = div(calc[0], calc[2]);
+            result = div(calcform[i], calcform[i + 2]);
         }
-        calc = [result];
-        console.log(result);
-        calcform.slice(0, 1, result);
+//        console.log('Result', result);
+        calcform.splice(0, 3, result)
+        calcform = [];
+        numbers = [result];
+        operators = [];
     }
-    return result;
 };
-
 
 
 handleCalcClick();
