@@ -44,7 +44,7 @@ const handleCalcClick = () => {
 // Gombleütés figyelő - C és kijelzőmező nullázása
 
 const cancelClick = () => {
-    delOutput.addEventListener('click', (event) => {
+    delOutput.addEventListener('click', () => {
         output.value = '';
         calc = [];
         numbers = [];
@@ -58,9 +58,9 @@ const cancelClick = () => {
 // Gombleütés figyelő - = és majd eredmény megjelenítése
 
 const equalClick = () => {
-    getResultInOutput.addEventListener('click', (event) => {
+    getResultInOutput.addEventListener('click', () => {
         numsAndOperatorsSeparator();
-        calculator(calcform);
+        calculator();
         if (numbers.includes(NaN)) {
             output.value = 'ERROR!';
         } else {
@@ -89,32 +89,32 @@ const numsAndOperatorsSeparator = () => {
     numbers.push(parseFloat(num));
     calcform.push(parseFloat(num));
     num = '';
-//    console.log('Számok:', numbers, 'Jelek:', operators);
 };
 
 
 // Műveletek végrehajtása
 
-const calculator = (arr) => {
-    for (let i = 0; i < operators.length; i += 1) {
-//        console.log('CALCFORM', calcform);
-        if (arr[i + 1] === '+') {
-            result = sum(calcform[i], calcform[i + 2]);
-        } else if (arr[i + 1] === '-') {
-            result = sub(calcform[i], calcform[i + 2]);
-        } else if (arr[i + 1] === '×') {
-            result = mul(calcform[i], calcform[i + 2]);
-        } else if (arr[i + 1] === '÷') {
-            result = div(calcform[i], calcform[i + 2]);
+const calculator = () => {
+    for (let i = 0; i < calcform.length; i += 1) {
+        if (calcform[i] === '+') {
+            result = sum(calcform[i - 1], calcform[i + 1]);
+            calcform.splice(i - 1, 3, result);
+            i = 0;
+        } else if (calcform[i] === '-') {
+            result = sub(calcform[i - 1], calcform[i + 1]);
+            calcform.splice(i - 1, 3, result);
+            i = 0;
+        } else if (calcform[i] === '×') {
+            result = mul(calcform[i - 1], calcform[i + 1]);
+            calcform.splice(i - 1, 3, result);
+            i = 0;
+        } else if (calcform[i] === '÷') {
+            result = div(calcform[i - 1], calcform[i + 1]);
+            calcform.splice(i - 1, 3, result);
+            i = 0;
         }
-//        console.log('Result', result);
-        calcform.splice(0, 3, result)
-        calcform = [];
-        numbers = [result];
-        operators = [];
     }
 };
-
 
 handleCalcClick();
 cancelClick();
